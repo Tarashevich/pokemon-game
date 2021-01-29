@@ -2,9 +2,23 @@ import style from './style.module.css'
 
 const Layout = (props) => {
 
+    let styleLayout;
+
+    if (props.urlBg) {
+        styleLayout = {
+            backgroundImage: `url(${props.urlBg})`
+        }
+    }
+    if (props.colorBg) {
+        styleLayout = {
+            backgroundColor: `${props.colorBg}`
+        }
+    }
+
+
     return (
         <section className={style.root} id={props.id}
-                 style={ props.colorBg ? {background:props.colorBg} : {background:`url(${props.urlBg})`}}>
+                 style={styleLayout}>
             <div className={style.wrapper}>
                 <article>
                     <div className={style.title}>
