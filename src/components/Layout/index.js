@@ -1,32 +1,28 @@
-import style from './style.module.css'
+import s from './style.module.css'
+import cn from 'classnames'
 
-const Layout = (props) => {
+const Layout = ({id, title, urlBg, colorBg, children}) => {
 
-    let styleLayout;
+    let layoutStyle;
 
-    if (props.urlBg) {
-        styleLayout = {
-            backgroundImage: `url(${props.urlBg})`
-        }
-    }
-    if (props.colorBg) {
-        styleLayout = {
-            backgroundColor: `${props.colorBg}`
-        }
-    }
-
+    if (urlBg) layoutStyle = {background:`url(${urlBg})`}
+    if (colorBg) layoutStyle = {background:colorBg}
 
     return (
-        <section className={style.root} id={props.id}
-                 style={styleLayout}>
-            <div className={style.wrapper}>
+        <section className={s.root} id={id}
+                 style={ layoutStyle }>
+            <div className={s.wrapper}>
                 <article>
-                    <div className={style.title}>
-                        <h3> {props.title} </h3>
-                        <span className={style.separator}></span>
+                    <div className={s.title}>
+                        <h3>
+                            {title}
+                        </h3>
+                        <span className={s.separator}>
+
+                        </span>
                     </div>
-                    <div className={`${style.desc} ${style.full}`}>
-                        <p> {props.desc} </p>
+                    <div className={cn(s.desc, s.full)}>
+                         {children}
                     </div>
                 </article>
             </div>
