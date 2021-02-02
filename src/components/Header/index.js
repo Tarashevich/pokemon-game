@@ -1,10 +1,6 @@
 import s from './style.module.css'
 
-const Header = ({title, desc, onClickButton}) => {
-
-    const handleClick = () => {
-        onClickButton && onClickButton('game');
-    }
+const Header = ({title, desc}) => {
 
     return (
         <header className={s.root}>
@@ -12,10 +8,6 @@ const Header = ({title, desc, onClickButton}) => {
             <div className={s.container}>
                 <h1>{title}</h1>
                 <p>{desc}</p>
-
-                <button onClick={handleClick}>
-                    Start Game
-                </button>
             </div>
 
         </header>
