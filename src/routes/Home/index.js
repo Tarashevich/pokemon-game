@@ -145,18 +145,10 @@ const POKEMONS = [
     }
 ]
 
-const HomePage = ({onChangePage}) => {
-
-    const handleClickButton = (page) => {
-        console.log('HomePage')
-        onChangePage && onChangePage(page)
-    }
+const HomePage = () => {
 
     return (
         <div className="App">
-
-            <MenuHeader title='Pokemon' onClickButton={handleClickButton} />
-
             <Header title='Pokemon' desc='good game'/>
 
             <Layout title='Rules' id='Rules' urlBg={layoutBgOne}>
@@ -195,8 +187,6 @@ const HomePage = ({onChangePage}) => {
                     </p>
                 </div>
             </Layout>
-
-            <Footer/>
         </div>
     );
 }

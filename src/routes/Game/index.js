@@ -1,18 +1,23 @@
-import Header from "../../components/Header";
-import MenuHeader from "../../components/MenuHeader";
+import {useHistory} from 'react-router-dom';
 
 import s from './style.module.css'
+import Layout from "../../components/Layout";
 
-const GamePage = ({onChangePage}) => {
+const GamePage = () => {
 
-    const handleClickButton = (page) => {
-        onChangePage && onChangePage('app');
+    const history = useHistory()
+
+    const handleClickButton = () => {
+        history.push('/')
     }
 
     return(
         <div className={s.game}>
-            <MenuHeader title='Pokemon'  onClickButton={handleClickButton} />
-            <Header title='Game Page' desc='In Future...'/>
+
+            <Layout title='Game Page' children='In Future...' />
+
+            <button onClick={handleClickButton}>Return Home</button>
+
         </div>
     )
 }
