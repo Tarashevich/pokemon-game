@@ -4,6 +4,25 @@ import {Link} from "react-router-dom";
 
 const Menu = ({handleClickNull, isActive}) => {
 
+    const menuItems = [
+        {
+            title: 'HOME',
+            to: '/'
+        },
+        {
+            title: 'GAME',
+            to: '/game'
+        },
+        {
+            title: 'ABOUT',
+            to: '/about'
+        },
+        {
+            title: 'CONTACT',
+            to: '/contact'
+        }
+    ]
+
     return (
         <div className={cn(s.menuContainer, {
             [s.active]: isActive === true,
@@ -12,30 +31,9 @@ const Menu = ({handleClickNull, isActive}) => {
             <div className={s.overlay}/>
             <div className={s.menuItems}>
                 <ul>
-                    <li>
-
-                        <Link onClick={handleClickNull} to="/">
-                            HOME
-                        </Link>
-                    </li>
-                    <li>
-
-                        <Link onClick={handleClickNull} to="/game">
-                            GAME
-                        </Link>
-                    </li>
-                    <li>
-
-                        <Link onClick={handleClickNull} to="/about">
-                            ABOUT
-                        </Link>
-                    </li>
-                    <li>
-
-                        <Link onClick={handleClickNull} to="/contact">
-                            CONTACT
-                        </Link>
-                    </li>
+                    {
+                        menuItems.map(item =><li><Link onClick={handleClickNull} to={item.to}>{item.title}</Link></li>)
+                    }
                 </ul>
             </div>
         </div>
