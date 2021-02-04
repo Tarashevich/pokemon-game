@@ -7,6 +7,7 @@ import PokemonCard from "../../components/PokemonCard";
 
 import layoutBgOne from "../../assets/background3.jpg"
 import layoutBgTwo from "../../assets/background2.jpg"
+import {useState} from "react";
 
 
 
@@ -147,6 +148,14 @@ const POKEMONS = [
 
 const HomePage = () => {
 
+    const [isActive, setActive] = useState([])
+
+    const activeCardState = (idCardActive) => {
+        isActive.includes(idCardActive)
+            ? setActive( isActive.filter(el => el !== idCardActive))
+            : setActive( [...isActive, idCardActive])
+    }
+
     return (
         <div className="App">
             <Header title='Pokemon' desc='good game'/>
@@ -166,10 +175,14 @@ const HomePage = () => {
                 <div className='flex'>
                     {POKEMONS.map(item => <PokemonCard
                         name={item.name}
+                        key={item.id + item.name}
                         id={item.id}
                         type={item.type}
                         img={item.img}
-                        values={item.values}/>
+                        values={item.values}
+                        onClick={(idCardActive) => activeCardState(idCardActive)}
+                        isActive={isActive}
+                        />
                     )}
                 </div>
             </Layout>
